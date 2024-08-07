@@ -1,6 +1,5 @@
 import { Tabs } from "expo-router";
-import { Home, Weekly, SearchLoc } from "../../components/Icons";
-import { Screen } from "../../components/Screen";
+import { Home, MapMarker, SearchLoc } from "../../components/Icons";
 export default function TabsLayout() {
   return (
     <Tabs
@@ -23,7 +22,7 @@ export default function TabsLayout() {
         name="allLocations"
         options={{
           title: "All Locations",
-          tabBarIcon: ({ color }) => <Weekly color={color} />,
+          tabBarIcon: ({ color }) => <MapMarker color={color} />,
         }}
       />
       <Tabs.Screen

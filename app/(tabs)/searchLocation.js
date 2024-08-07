@@ -3,7 +3,6 @@ import { Screen } from "../../components/Screen";
 import { useRouter } from "expo-router";
 import SearchIcon from "../../components/(svg)/Search";
 import { View, Text, TextInput, ScrollView, Pressable } from "react-native";
-import API_KEY from "../../lib/WeatherAPIKey";
 import CancelIcon from "../../components/(svg)/Cancel";
 import { PopularLocations } from "../../components/PopularLocations";
 import { FlashList } from "@shopify/flash-list"; // Import FlashList
@@ -12,6 +11,7 @@ export default function SearchLocation() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const router = useRouter();
+  const API_KEY = process.env.EXPO_PUBLIC_WEATHER_API_KEY;
 
   const fetchCitySuggestions = async (query) => {
     if (query.length === 0) {
