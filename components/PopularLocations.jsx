@@ -19,6 +19,13 @@ export function PopularLocations(city) {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(true); // Add loading state
 
+  const formatTime = (timestamp, timezoneOffset) => {
+    const date = new Date((timestamp + timezoneOffset) * 1000);
+    const hours = date.getUTCHours().toString().padStart(2, "0");
+    const minutes = date.getUTCMinutes().toString().padStart(2, "0");
+    return `${hours}:${minutes}`;
+  };
+
   const fetchWeather = async () => {
     try {
       setLoading(true);
@@ -56,7 +63,7 @@ export function PopularLocations(city) {
                 {cityName} {Math.round(weather.main.temp)}º
               </Text>
               <Text className="text-white font-light text-base mb-1">
-                {dayjs((weather.dt + weather.timezone) * 1000).format("HH:mm")}
+                {formatTime(weather.dt, weather.timezone)}
               </Text>
             </View>
             <Image source={images[cityName]} className="h-24 w-32 rounded-md" />
